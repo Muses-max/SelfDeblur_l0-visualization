@@ -47,8 +47,8 @@ class HelloworldHandler(tornado.web.RequestHandler):
             self.write("pong")
         elif self.request.uri.lower().find("helloworld") >= 0:
             self.write("helloworld!")
-        if self.log:
-            writelog(json.dumps{"uri":self.request.uri, "method":self.request.method}, ip=self.request.remote_ip)
+        if log:
+            writelog(json.dumps({"uri":self.request.uri, "method":self.request.method}), ip=self.request.remote_ip)
             
             
 class FileHandler(tornado.web.RequestHandler):
@@ -70,8 +70,9 @@ class CommandHandler(tornado.web.RequestHandler):
          pass
                 
     def post(self):
-              
-            
+         pass
+
+        
 def main():
     tornado.options.parse_command_line()
     application = tornado.web.Application(
