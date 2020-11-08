@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="vue.min.js"></script>
+    <script type="text/javascript" src="axios.min.js"></script>
+    <style>
+       .Start{
+           text-decoration: none;
+           width:100px;
+           height:62px;
+           background-color:#00ff00;
+        }
+       .Start:hover{
+           text-decoration: underline;
+           width:100px;
+           height:62px;
+           background-color:#00ff00;
+        }
+        .Stop{
+           text-decoration: none;
+           width:100px;
+           height:62px;
+           background-color:#ff0000;
+        }
+        .Stop:hover{
+           text-decoration: underline;
+           width:100px;
+           height:62px;
+           background-color:#ff0000;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="startbutton">
+        <button id="b1" :class="todo" v-on:Click="btnClick()"> {{todo}} </button>    
+    </div>
+    <script>
+       //这里需要让程序的启停状态, 因此data没有写成函数
+       var app=new Vue({
+         el:'#startbutton',
+         data:{
+           start:false,
+           todo:"Start"
+         },
+         methods:{
+           btnClick:function(){
+                this.todo_original = this.todo;
+                this.start = !this.start;
+                if(!this.start)
+                   this.todo = "Start";
+                else
+                   this.todo = "Stop";
+                axios.post('/command', {
+                  state: this.todo_original
+                })
+                .then(function (response) {
+                 console.log(response);
+                })
+                .catch(function (error) {
+                 console.log(error);
+                 alert("error");
+                }); //axios  
+           } //end of btnClick
+         }//end of methods
+       })
+    </script>
+</body>
