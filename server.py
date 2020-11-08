@@ -4,6 +4,7 @@ import tornado.options
 import tornado.web
 import os
 import time
+import json
 
 from tornado.options import define, options
 
@@ -41,11 +42,13 @@ class HelloworldHandler(tornado.web.RequestHandler):
     def post(self):
         self.action()
         
-    def action(self):
+    def action(self, log=True):
         if self.request.uri.lower().find("ping") >= 0:
             self.write("pong")
         elif self.request.uri.lower().find("helloworld") >= 0:
             self.write("helloworld!")
+        if self.log:
+            writelog(json.dumps{"uri":self.request.uri, "method":self.request.method}, ip=self.request.remote_ip)
             
             
 class FileHandler(tornado.web.RequestHandler):
