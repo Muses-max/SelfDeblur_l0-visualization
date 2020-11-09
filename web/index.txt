@@ -9,24 +9,32 @@
            width:100px;
            height:62px;
            background-color:#00ff00;
+           border: none;
+           outline: none;/* Remove the border after the clicking event */
         }
        .Start:hover{
            text-decoration: underline;
            width:100px;
            height:62px;
            background-color:#00ff00;
+           border: none;
+           outline: none;/* Remove the border after the clicking event */
         }
         .Stop{
            text-decoration: none;
            width:100px;
            height:62px;
            background-color:#ff0000;
+           border: none;
+           outline:none; /* Remove the border after the clicking event */
         }
         .Stop:hover{
            text-decoration: underline;
            width:100px;
            height:62px;
            background-color:#ff0000;
+           border: none;
+           outline: none; /* Remove the border after the clicking event */
         }
     </style>
     
@@ -40,8 +48,10 @@
        var app=new Vue({
          el:'#startbutton',
          data:{
-           start:false,
-           todo:"Start"
+           start: false,
+           todo:"Start",
+           ip:"127.0.0.1", //server.py will automatically modify it!
+           port:0
          },
          methods:{
            btnClick:function(){
@@ -55,14 +65,43 @@
                   state: this.todo_original
                 })
                 .then(function (response) {
-                 console.log(response);
+                 //alert(response);
                 })
                 .catch(function (error) {
                  console.log(error);
-                 alert("error");
+                 //alert("error");
                 }); //axios  
-           } //end of btnClick
-         }//end of methods
+           }, //end of btnClick
+         },//end of methods
+         
+         created: function() {
+            console.log("Starting connection to WebSocket Server")
+            this.connection = new WebSocket("ws://" + this.ip + ":" + this.port + "/websocket")
+
+            this.connection.onmessage = function(event) {
+              var str = event.data;
+              var obj = JSON.parse(str);
+              console.log(obj.finish);
+              if(obj.finish == "True"){
+              /*
+               If the Vue code is written as:
+               `
+               this.todo = "Start";
+               this.start = false;
+               `
+               Then the website would not be rendered when the variables "todo" and "start" are updated!
+              */
+                app.todo = "Start";
+                app.start = false; 
+                console.log("here!");
+              }
+            }
+
+            this.connection.onopen = function(event) {
+              console.log("Successfully connected to the echo websocket server...")
+            }
+
+         } //end of created: function()
        })
     </script>
 </body>
