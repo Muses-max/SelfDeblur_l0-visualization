@@ -131,12 +131,12 @@
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Panel</a>
+                <a class="navbar-brand" href="javascript:void(0)" onclick="gobackhome()">Home</a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="javascript:void(0)" onclick="switch2Controller()">Controller</a></li>
-                    <li><a>Monitor</a></li>
+                    <li><a href="javascript:void(0)" onclick="gotomonitor()">Monitor</a></li>
                     <li><a>Editor</a></li>
                     <li><a href="https://www.google.com" target="_Blank">Google</a></li>
                     <li><a href="https://www.baidu.com" target="_Blank">Baidu</a></li>
@@ -160,7 +160,7 @@
             <span class="testswitch-switch" id="button_circle"></span>
         </label>
     </div>
-    <div id="gpubars" style="margin-top:40px;">
+    <div id="gpubars" style="margin-top:70px;">
       <div id="gpubars-view" style="width:1500px;height:400px;"></div>
       <div id="raw" style="font-family:Consolas,Monaco,monospace" ></div>
     </div>
@@ -168,7 +168,8 @@
        //这里需要让程序的启停状态, 因此data没有写成函数
        var ip = "127.0.0.1";//server.py will automatically modify it!
        var port = 0;//server.py will automatically modify it!
-       var global_state = 'start'; //global_state in ['gpu_monitor', 'file_editor', 'process_controller']
+       var port2 = 0; //server_ss.py; single thread
+       var globalstate = 'home'; //global_state in ['home', 'gpu_monitor', 'file_editor', 'process_controller']
        var app = new Vue({
          el:'#startbutton',
          data:{
@@ -183,9 +184,7 @@
                    this.todo = "Start";
                 else
                    this.todo = "Stop";
-                axios.post('/command', {
-                  state: this.todo_original
-                })
+                axios.get('http://'+ip+':'+port2+'/command?state='+this.todo_original)
                 .then(function (response) {
                  //alert(response);
                 })
@@ -198,7 +197,7 @@
          
          created: function() {
             console.log("Starting connection to WebSocket Server")
-            this.connection = new WebSocket("ws://" + ip + ":" + port + "/websocket")
+            this.connection = new WebSocket("ws://" + ip + ":" + port2 + "/websocket")
 
             this.connection.onmessage = function(event) {
               var str = event.data;
@@ -381,7 +380,7 @@
           state = localstate;
        if(inner && state == "raw")
           document.getElementById("raw").innerHTML = inner;
-       var interval = 1500000000000;
+       var interval = 1500;
        
        /*
        The view mode
@@ -406,6 +405,8 @@
          
          methods: {
           getNewMessage: function() {
+              if(globalstate != 'monitor')
+                 return;
               axios.get('/gpu?adddiv=False&type='+state)
                 .then(function (response) {
                   var count = response.data.count;
@@ -474,8 +475,27 @@
         
         
        function switch2Controller(){
-       
-       
+          globalstate = 'Controller';
+          $("#startbutton").css("display", "block");
+          $("#gpubars").css("display","none");
+          $("#raw-view-switch").css("display","none");
        }
+       
+       function gobackhome(){
+          globalstate = 'home';
+          $("#startbutton").css("display", "none");
+          $("#gpubars").css("display","none");
+          $("#raw-view-switch").css("display","none");
+       }
+       
+       function gotomonitor(){
+          globalstate = 'monitor';
+          $("#startbutton").css("display", "none");
+          $("#gpubars").css("display","block");
+          $("#raw-view-switch").css("display","block");
+       }
+       
+       if(globalstate == "home")
+          gobackhome();
     </script>
 </body>

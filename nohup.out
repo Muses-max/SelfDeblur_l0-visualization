@@ -1,0 +1,475 @@
+Traceback (most recent call last):
+  File "server_ss.py", line 297, in <module>
+    main()
+  File "server_ss.py", line 291, in main
+    http_server.listen(options.port2)
+  File "/home/muses/miniconda3/lib/python3.7/site-packages/tornado/options.py", line 145, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'port2'
+[I 201111 06:12:54 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2227.06ms
+[I 201111 06:12:56 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2190.85ms
+[I 201111 06:12:59 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2338.74ms
+[I 201111 06:12:59 web:2250] 200 GET / (10.1.3.228) 2339.59ms
+[I 201111 06:13:01 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2324.46ms
+[I 201111 06:13:01 web:2250] 200 GET /bootstrap.css (10.1.3.228) 5.09ms
+[I 201111 06:13:01 web:2250] 200 GET /jquery.min.js (10.1.3.228) 5.51ms
+[I 201111 06:13:01 web:2250] 200 GET /vue.min.js (10.1.3.228) 5.95ms
+[I 201111 06:13:01 web:2250] 200 GET /axios.min.js (10.1.3.228) 6.13ms
+[I 201111 06:13:01 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 6.95ms
+[I 201111 06:13:01 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 7.34ms
+[I 201111 06:13:01 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 11.38ms
+[I 201111 06:13:01 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 1.33ms
+[I 201111 06:13:01 web:2250] 200 GET /axios.min.map (10.1.3.228) 2.20ms
+[I 201111 06:13:01 web:2250] 200 GET /bootstrap.min.css.map (10.1.3.228) 4.42ms
+[I 201111 06:13:01 web:2250] 200 GET /bootstrap.css.map (10.1.3.228) 3.39ms
+Traceback (most recent call last):
+  File "server_ss.py", line 297, in <module>
+    main()
+  File "server_ss.py", line 291, in main
+    http_server.listen(options.port2)
+  File "/home/muses/miniconda3/lib/python3.7/site-packages/tornado/options.py", line 145, in __getattr__
+    raise AttributeError("Unrecognized option %r" % name)
+AttributeError: Unrecognized option 'port2'
+child 57 (pid 192715) killed by signal 9, restarting
+child 12 (pid 192661) killed by signal 9, restarting
+child 11 (pid 192660) killed by signal 9, restarting
+child 79 (pid 192741) killed by signal 9, restarting
+child 36 (pid 192690) killed by signal 9, restarting
+child 30 (pid 192682) killed by signal 9, restarting
+child 47 (pid 192703) killed by signal 9, restarting
+child 17 (pid 192669) killed by signal 9, restarting
+child 71 (pid 192731) killed by signal 9, restarting
+child 40 (pid 192694) killed by signal 9, restarting
+child 70 (pid 192730) killed by signal 9, restarting
+child 42 (pid 192696) killed by signal 9, restarting
+child 15 (pid 192664) killed by signal 9, restarting
+child 74 (pid 192736) killed by signal 9, restarting
+child 60 (pid 192718) killed by signal 9, restarting
+[W 201111 06:23:30 web:2250] 403 GET /websocket (10.1.3.228) 1.33ms
+[W 201111 06:23:43 web:2250] 405 OPTIONS /command (10.1.3.228) 0.92ms
+[I 201111 06:25:11 web:2250] 200 GET /command (10.1.3.228) 1.34ms
+[W 201111 06:25:11 web:2250] 404 GET /favicon.ico (10.1.3.228) 0.81ms
+child 44 (pid 225537) killed by signal 9, restarting
+child 32 (pid 225525) killed by signal 9, restarting
+child 60 (pid 225553) killed by signal 9, restarting
+child 67 (pid 225560) killed by signal 9, restarting
+child 77 (pid 225570) killed by signal 9, restarting
+child 76 (pid 225569) killed by signal 9, restarting
+child 4 (pid 225497) killed by signal 9, restarting
+child 43 (pid 225536) killed by signal 9, restarting
+child 66 (pid 225559) killed by signal 9, restarting
+child 65 (pid 225558) killed by signal 9, restarting
+child 38 (pid 225531) killed by signal 9, restarting
+child 31 (pid 225524) killed by signal 9, restarting
+[W 201111 06:29:20 web:2250] 403 GET /websocket (10.1.3.228) 1.43ms
+[W 201111 06:29:32 web:2250] 405 OPTIONS /command (10.1.3.228) 0.91ms
+child 58 (pid 250242) killed by signal 9, restarting
+child 16 (pid 250195) killed by signal 9, restarting
+child 23 (pid 250205) killed by signal 9, restarting
+child 60 (pid 250245) killed by signal 9, restarting
+child 47 (pid 250231) killed by signal 9, restarting
+child 6 (pid 250183) killed by signal 9, restarting
+child 7 (pid 250184) killed by signal 9, restarting
+child 39 (pid 250223) killed by signal 9, restarting
+child 13 (pid 250190) killed by signal 9, restarting
+child 31 (pid 250215) killed by signal 9, restarting
+child 26 (pid 250208) killed by signal 9, restarting
+child 19 (pid 250198) killed by signal 9, restarting
+child 29 (pid 250213) killed by signal 9, restarting
+child 63 (pid 250248) killed by signal 9, restarting
+child 11 (pid 250188) killed by signal 9, restarting
+child 22 (pid 250204) killed by signal 9, restarting
+child 49 (pid 250233) killed by signal 9, restarting
+child 30 (pid 250214) killed by signal 9, restarting
+child 9 (pid 250186) killed by signal 9, restarting
+[W 201111 06:30:52 web:2250] 403 GET /websocket (10.1.3.228) 1.35ms
+[I 201111 06:31:09 web:2250] 200 GET / (10.1.3.228) 1.59ms
+[I 201111 06:31:09 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 1.89ms
+[I 201111 06:31:09 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 1.73ms
+[I 201111 06:31:09 web:2250] 200 GET /bootstrap.css (10.1.3.228) 2.62ms
+[I 201111 06:31:09 web:2250] 200 GET /jquery.min.js (10.1.3.228) 1.40ms
+[I 201111 06:31:09 web:2250] 200 GET /vue.min.js (10.1.3.228) 2.09ms
+[I 201111 06:31:09 web:2250] 200 GET /axios.min.js (10.1.3.228) 2.06ms
+[I 201111 06:31:09 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 11.57ms
+[I 201111 06:31:09 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 1.26ms
+[I 201111 06:31:09 web:2250] 200 GET /axios.min.map (10.1.3.228) 1.69ms
+[I 201111 06:31:09 web:2250] 200 GET /bootstrap.css.map (10.1.3.228) 2.91ms
+[I 201111 06:31:09 web:2250] 200 GET /bootstrap.min.css.map (10.1.3.228) 3.48ms
+[I 201111 06:31:09 web:2250] 101 GET /websocket (10.1.3.228) 1.05ms
+[I 201111 06:31:09 web:2250] 200 GET /gpu?adddiv=False&type=gpubars-view (10.1.3.228) 348.50ms
+[I 201111 06:31:12 web:2250] 200 GET /gpu?adddiv=False&type=gpubars-view (10.1.3.228) 396.97ms
+[W 201111 06:31:12 web:2250] 403 GET /websocket (10.1.3.228) 0.87ms
+[W 201111 06:31:20 web:2250] 405 OPTIONS /command (10.1.3.228) 0.95ms
+[W 201111 06:33:35 web:2250] 405 OPTIONS /command (10.1.3.228) 0.86ms
+[W 201111 06:33:36 web:2250] 405 OPTIONS /command (10.1.3.228) 0.75ms
+child 14 (pid 256923) killed by signal 9, restarting
+child 37 (pid 256949) killed by signal 9, restarting
+child 18 (pid 256927) killed by signal 9, restarting
+child 48 (pid 256960) killed by signal 9, restarting
+child 51 (pid 256963) killed by signal 9, restarting
+child 73 (pid 256990) killed by signal 9, restarting
+child 44 (pid 256956) killed by signal 9, restarting
+child 66 (pid 256983) killed by signal 9, restarting
+child 31 (pid 256940) killed by signal 9, restarting
+[W 201111 06:34:43 web:2250] 403 GET /websocket (10.1.3.228) 1.67ms
+[I 201111 06:34:45 web:2250] 200 OPTIONS /command (10.1.3.228) 0.99ms
+[I 201111 06:35:13 web:2250] 304 GET /command (10.1.3.228) 1.34ms
+[I 201111 06:35:59 web:2250] 200 OPTIONS /command (10.1.3.228) 0.88ms
+[I 201111 06:36:15 web:2250] 304 GET /command (10.1.3.228) 0.75ms
+[I 201111 06:36:18 web:2250] 200 GET /command (10.1.3.228) 0.93ms
+child 21 (pid 273522) killed by signal 9, restarting
+child 61 (pid 273563) killed by signal 9, restarting
+Traceback (most recent call last):
+  File "server_ms.py", line 296, in <module>
+    main()
+  File "server_ms.py", line 290, in main
+    http_server.listen(port)
+  File "/home/muses/miniconda3/lib/python3.7/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/home/muses/miniconda3/lib/python3.7/site-packages/tornado/netutil.py", line 174, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+[W 201111 06:38:13 web:2250] 403 GET /websocket (10.1.3.228) 1.52ms
+[I 201111 06:38:16 web:2250] 200 OPTIONS /command (10.1.3.228) 0.99ms
+child 17 (pid 288194) killed by signal 9, restarting
+child 23 (pid 288202) killed by signal 9, restarting
+[W 201111 06:43:23 web:2250] 403 GET /websocket (10.1.3.228) 1.35ms
+[I 201111 06:43:26 web:2250] 200 OPTIONS /command (10.1.3.228) 0.75ms
+Traceback (most recent call last):
+  File "server_ms.py", line 296, in <module>
+    main()
+  File "server_ms.py", line 290, in main
+    http_server.listen(port)
+  File "/home/muses/miniconda3/lib/python3.7/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/home/muses/miniconda3/lib/python3.7/site-packages/tornado/netutil.py", line 174, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+Traceback (most recent call last):
+  File "server_ss.py", line 340, in <module>
+    main()
+  File "server_ss.py", line 334, in main
+    http_server.listen(port2)
+  File "/home/muses/miniconda3/lib/python3.7/site-packages/tornado/tcpserver.py", line 151, in listen
+    sockets = bind_sockets(port, address=address)
+  File "/home/muses/miniconda3/lib/python3.7/site-packages/tornado/netutil.py", line 174, in bind_sockets
+    sock.bind(sockaddr)
+OSError: [Errno 98] Address already in use
+[W 201111 06:46:02 web:2250] 403 GET /websocket (10.1.3.228) 0.72ms
+[I 201111 06:46:03 web:2250] 200 GET /command?state=true (10.1.3.228) 2.86ms
+[W 201111 06:47:56 web:2250] 403 GET /websocket (10.1.3.228) 0.85ms
+child 67 (pid 310346) killed by signal 9, restarting
+child 27 (pid 310300) killed by signal 9, restarting
+child 55 (pid 310330) killed by signal 9, restarting
+child 15 (pid 310288) killed by signal 9, restarting
+child 36 (pid 310309) killed by signal 9, restarting
+child 3 (pid 310276) killed by signal 9, restarting
+child 78 (pid 310362) killed by signal 9, restarting
+child 13 (pid 310286) killed by signal 9, restarting
+child 61 (pid 310338) killed by signal 9, restarting
+child 45 (pid 310318) killed by signal 9, restarting
+child 26 (pid 310299) killed by signal 9, restarting
+child 49 (pid 310322) killed by signal 9, restarting
+child 72 (pid 310354) killed by signal 9, restarting
+child 59 (pid 310336) killed by signal 9, restarting
+[I 201111 06:49:23 process:126] Starting 80 processes
+[I 201111 06:49:27 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2102.58ms
+[I 201111 06:49:29 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2284.50ms
+[I 201111 06:49:33 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2308.33ms
+[I 201111 06:49:34 web:2250] 200 GET / (10.1.3.228) 1.47ms
+[I 201111 06:49:34 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 2.03ms
+[I 201111 06:49:34 web:2250] 200 GET /jquery.min.js (10.1.3.228) 3.03ms
+[I 201111 06:49:34 web:2250] 200 GET /vue.min.js (10.1.3.228) 3.04ms
+[I 201111 06:49:34 web:2250] 200 GET /bootstrap.css (10.1.3.228) 3.28ms
+[I 201111 06:49:34 web:2250] 200 GET /axios.min.js (10.1.3.228) 3.15ms
+[I 201111 06:49:34 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 3.02ms
+[I 201111 06:49:34 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 10.72ms
+[I 201111 06:49:34 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 1.27ms
+[I 201111 06:49:34 web:2250] 200 GET /axios.min.map (10.1.3.228) 1.66ms
+[I 201111 06:49:34 web:2250] 101 GET /websocket (10.1.3.228) 1.64ms
+[I 201111 06:49:34 web:2250] 200 GET /bootstrap.min.css.map (10.1.3.228) 3.90ms
+[I 201111 06:49:34 web:2250] 200 GET /bootstrap.css.map (10.1.3.228) 3.97ms
+[I 201111 06:49:34 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2144.55ms
+[I 201111 06:49:36 web:2250] 200 GET /command?state=true (10.1.3.228) 2.00ms
+[I 201111 06:49:36 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2335.68ms
+[I 201111 06:49:39 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2366.44ms
+[I 201111 06:49:41 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2169.99ms
+[I 201111 06:49:44 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2163.12ms
+[I 201111 06:49:47 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2413.54ms
+[I 201111 06:49:49 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2131.75ms
+[I 201111 06:49:51 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2201.26ms
+[I 201111 06:49:54 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2142.63ms
+[I 201111 06:49:56 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2192.65ms
+[I 201111 06:49:59 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2227.18ms
+[I 201111 06:50:01 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2299.62ms
+[I 201111 06:50:04 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2198.83ms
+[I 201111 06:50:07 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2374.91ms
+[I 201111 06:50:09 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2161.41ms
+[I 201111 06:50:11 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2233.14ms
+[I 201111 06:50:14 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2260.90ms
+[I 201111 06:50:17 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2326.37ms
+[I 201111 06:50:20 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2354.25ms
+[I 201111 06:50:22 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2418.99ms
+[I 201111 06:50:24 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2223.09ms
+[I 201111 06:50:26 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2261.06ms
+[I 201111 06:50:30 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2358.97ms
+[I 201111 06:50:31 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2298.40ms
+[I 201111 06:50:34 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2276.44ms
+[I 201111 06:50:36 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2265.52ms
+[I 201111 06:50:39 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2256.98ms
+[I 201111 06:50:42 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2323.22ms
+[I 201111 06:50:45 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2381.57ms
+[I 201111 06:50:47 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2386.89ms
+[I 201111 06:50:50 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2423.41ms
+[I 201111 06:50:51 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2195.47ms
+[I 201111 06:50:55 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2245.75ms
+[I 201111 06:50:56 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2216.02ms
+[I 201111 06:50:59 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2199.01ms
+[I 201111 06:51:01 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2247.02ms
+[I 201111 06:51:04 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2264.89ms
+[I 201111 06:51:06 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2193.10ms
+[I 201111 06:51:09 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2312.88ms
+[I 201111 06:51:11 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2292.67ms
+[I 201111 06:51:14 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2219.84ms
+[I 201111 06:51:17 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2339.26ms
+[I 201111 06:51:19 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2261.70ms
+[I 201111 06:51:22 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2380.96ms
+[I 201111 06:51:24 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2293.63ms
+[I 201111 06:51:26 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2163.05ms
+[I 201111 06:51:29 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2211.33ms
+[I 201111 06:51:31 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2235.03ms
+[I 201111 06:51:34 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2211.57ms
+[I 201111 06:51:36 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2130.34ms
+[I 201111 06:51:39 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2159.56ms
+[I 201111 06:51:42 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2466.38ms
+[I 201111 06:51:44 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2189.44ms
+[I 201111 06:51:46 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2302.18ms
+[I 201111 06:51:49 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2209.57ms
+[I 201111 06:51:51 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2189.24ms
+[I 201111 06:51:54 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2270.39ms
+[I 201111 06:51:57 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2347.17ms
+[I 201111 06:52:00 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2333.86ms
+[I 201111 06:52:01 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2174.97ms
+[I 201111 06:52:04 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2237.59ms
+[I 201111 06:52:07 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2340.90ms
+[I 201111 06:52:10 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2429.72ms
+[I 201111 06:52:11 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2302.74ms
+[I 201111 06:52:15 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2353.13ms
+[I 201111 06:52:16 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2218.09ms
+[I 201111 06:52:19 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2208.74ms
+[I 201111 06:52:22 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2351.21ms
+[I 201111 06:52:25 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2282.38ms
+[I 201111 06:52:27 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2380.74ms
+[I 201111 06:52:29 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2303.48ms
+[I 201111 06:52:31 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2251.60ms
+[I 201111 06:52:34 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2207.60ms
+[I 201111 06:52:36 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2319.10ms
+[I 201111 06:52:40 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2303.24ms
+[I 201111 06:52:41 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2292.01ms
+[I 201111 06:52:45 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2335.81ms
+[I 201111 06:52:46 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2309.32ms
+[I 201111 06:52:50 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2335.06ms
+[I 201111 06:52:51 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2217.18ms
+[I 201111 06:52:54 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2270.01ms
+[I 201111 06:52:56 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2316.35ms
+[I 201111 06:52:59 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2125.57ms
+[I 201111 06:53:01 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2305.16ms
+[I 201111 06:53:04 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2305.97ms
+[I 201111 06:53:06 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2315.52ms
+[I 201111 06:53:09 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2235.23ms
+[I 201111 06:53:12 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2373.96ms
+[I 201111 06:53:14 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2196.95ms
+[I 201111 06:53:16 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2219.03ms
+[I 201111 06:53:19 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2228.72ms
+[I 201111 06:53:21 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2231.72ms
+[I 201111 06:53:24 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2149.12ms
+[I 201111 06:53:26 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2236.19ms
+[I 201111 06:53:29 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2243.65ms
+[I 201111 06:53:31 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2169.91ms
+[I 201111 06:53:34 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2167.78ms
+[I 201111 06:53:37 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2319.66ms
+[I 201111 06:53:39 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 1995.35ms
+[I 201111 06:53:41 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2196.65ms
+[I 201111 06:53:45 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2358.98ms
+[I 201111 06:53:47 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2388.44ms
+[I 201111 06:53:50 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2338.00ms
+[I 201111 06:53:52 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2378.03ms
+[I 201111 06:53:54 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2221.28ms
+[I 201111 06:53:56 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2215.89ms
+[I 201111 06:53:59 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2223.77ms
+[W 201111 06:54:00 process:161] child 12 (pid 336135) killed by signal 9, restarting
+[W 201111 06:54:00 process:161] child 2 (pid 336116) killed by signal 9, restarting
+[W 201111 06:54:00 process:161] child 25 (pid 336154) killed by signal 9, restarting
+[W 201111 06:54:00 process:161] child 46 (pid 336179) killed by signal 9, restarting
+[W 201111 06:54:00 process:161] child 55 (pid 336188) killed by signal 9, restarting
+[W 201111 06:54:00 process:161] child 57 (pid 336190) killed by signal 9, restarting
+[W 201111 06:54:00 process:161] child 6 (pid 336124) killed by signal 9, restarting
+[W 201111 06:54:00 process:161] child 36 (pid 336167) killed by signal 9, restarting
+[W 201111 06:54:00 process:161] child 65 (pid 336198) killed by signal 9, restarting
+[I 201111 06:54:05 process:126] Starting 80 processes
+[I 201111 06:54:09 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2261.87ms
+[I 201111 06:54:10 web:2250] 200 GET / (10.1.3.228) 1.55ms
+[I 201111 06:54:10 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 2.96ms
+[I 201111 06:54:10 web:2250] 200 GET /jquery.min.js (10.1.3.228) 2.88ms
+[I 201111 06:54:10 web:2250] 200 GET /bootstrap.css (10.1.3.228) 2.82ms
+[I 201111 06:54:10 web:2250] 200 GET /vue.min.js (10.1.3.228) 2.70ms
+[I 201111 06:54:10 web:2250] 200 GET /axios.min.js (10.1.3.228) 2.77ms
+[I 201111 06:54:10 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 1.16ms
+[I 201111 06:54:10 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 11.40ms
+[I 201111 06:54:10 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 1.31ms
+[I 201111 06:54:12 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2363.22ms
+[W 201111 06:54:53 web:2250] 404 GET /handler (10.1.3.228) 1.16ms
+[I 201111 06:55:01 web:2250] 200 GET / (10.1.3.228) 1.65ms
+[I 201111 06:55:01 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 1.41ms
+[I 201111 06:55:01 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 1.12ms
+[I 201111 06:55:01 web:2250] 200 GET /vue.min.js (10.1.3.228) 1.29ms
+[I 201111 06:55:01 web:2250] 200 GET /jquery.min.js (10.1.3.228) 1.72ms
+[I 201111 06:55:01 web:2250] 200 GET /axios.min.js (10.1.3.228) 1.67ms
+[I 201111 06:55:01 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 11.67ms
+[I 201111 06:55:01 web:2250] 200 GET /bootstrap.css (10.1.3.228) 1.34ms
+[I 201111 06:55:01 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 1.26ms
+[W 201111 06:55:59 process:161] child 72 (pid 356297) killed by signal 9, restarting
+[W 201111 06:55:59 process:161] child 55 (pid 356277) killed by signal 9, restarting
+[W 201111 06:55:59 process:161] child 15 (pid 356229) killed by signal 9, restarting
+[W 201111 06:55:59 process:161] child 16 (pid 356230) killed by signal 9, restarting
+[I 201111 06:56:03 process:126] Starting 80 processes
+[I 201111 06:56:06 web:2250] 200 GET / (10.1.3.228) 3.08ms
+[I 201111 06:56:06 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 1.40ms
+[I 201111 06:56:06 web:2250] 200 GET /vue.min.js (10.1.3.228) 1.40ms
+[I 201111 06:56:06 web:2250] 200 GET /jquery.min.js (10.1.3.228) 3.31ms
+[I 201111 06:56:06 web:2250] 200 GET /axios.min.js (10.1.3.228) 3.15ms
+[I 201111 06:56:06 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 2.61ms
+[I 201111 06:56:06 web:2250] 200 GET /bootstrap.css (10.1.3.228) 3.35ms
+[I 201111 06:56:06 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 10.38ms
+[I 201111 06:56:06 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 1.00ms
+[W 201111 06:56:58 process:161] child 16 (pid 364382) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 30 (pid 364398) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 77 (pid 364456) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 79 (pid 364459) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 56 (pid 364432) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 15 (pid 364381) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 20 (pid 364386) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 37 (pid 364409) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 68 (pid 364444) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 24 (pid 364392) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 36 (pid 364406) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 62 (pid 364438) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 29 (pid 364397) killed by signal 9, restarting
+[W 201111 06:56:58 process:161] child 76 (pid 364454) killed by signal 9, restarting
+[I 201111 06:57:09 process:126] Starting 80 processes
+[I 201111 06:57:11 web:2250] 200 GET / (10.1.3.228) 2.74ms
+[I 201111 06:57:11 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 1.29ms
+[I 201111 06:57:12 web:2250] 200 GET /bootstrap.css (10.1.3.228) 2.80ms
+[I 201111 06:57:12 web:2250] 200 GET /vue.min.js (10.1.3.228) 3.04ms
+[I 201111 06:57:12 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 2.30ms
+[I 201111 06:57:12 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 1.07ms
+[I 201111 06:57:12 web:2250] 200 GET /axios.min.js (10.1.3.228) 11.15ms
+[I 201111 06:57:12 web:2250] 200 GET /jquery.min.js (10.1.3.228) 2.96ms
+[I 201111 06:57:12 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 12.23ms
+[I 201111 06:57:29 web:2250] 304 GET /jquery.min.js (10.1.3.228) 1.10ms
+[W 201111 06:59:30 process:161] child 36 (pid 368968) killed by signal 9, restarting
+[W 201111 06:59:30 process:161] child 0 (pid 368918) killed by signal 9, restarting
+[W 201111 06:59:30 process:161] child 44 (pid 368977) killed by signal 9, restarting
+[I 201111 06:59:36 process:126] Starting 80 processes
+[I 201111 06:59:40 web:2250] 200 GET / (10.1.3.228) 2.71ms
+[I 201111 06:59:40 web:2250] 200 GET /axios.min.js (10.1.3.228) 6.03ms
+[I 201111 06:59:40 web:2250] 200 GET /jquery.min.js (10.1.3.228) 9.32ms
+[I 201111 06:59:40 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 1.69ms
+[I 201111 06:59:40 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 2.89ms
+[I 201111 06:59:40 web:2250] 200 GET /vue.min.js (10.1.3.228) 2.85ms
+[I 201111 06:59:40 web:2250] 200 GET /bootstrap.css (10.1.3.228) 2.28ms
+[I 201111 06:59:40 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 11.00ms
+[I 201111 06:59:40 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 1.26ms
+[I 201111 06:59:50 web:2250] 304 GET /bootstrap.min.css (10.1.3.228) 1.21ms
+[I 201111 07:00:37 web:2250] 304 GET /bootstrap.min.css (10.1.3.228) 1.04ms
+[W 201111 07:01:24 process:161] child 36 (pid 379054) killed by signal 9, restarting
+[W 201111 07:01:24 process:161] child 57 (pid 379080) killed by signal 9, restarting
+[W 201111 07:01:24 process:161] child 6 (pid 379019) killed by signal 9, restarting
+[W 201111 07:01:24 process:161] child 47 (pid 379068) killed by signal 9, restarting
+[W 201111 07:01:24 process:161] child 25 (pid 379043) killed by signal 9, restarting
+[W 201111 07:01:24 process:161] child 3 (pid 379015) killed by signal 9, restarting
+[W 201111 07:01:24 process:161] child 7 (pid 379020) killed by signal 9, restarting
+[I 201111 07:01:28 process:126] Starting 80 processes
+[I 201111 07:01:32 web:2250] 200 GET / (10.1.3.228) 2.67ms
+[I 201111 07:01:32 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 1.55ms
+[I 201111 07:01:32 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 2.90ms
+[I 201111 07:01:32 web:2250] 200 GET /vue.min.js (10.1.3.228) 1.01ms
+[I 201111 07:01:32 web:2250] 200 GET /jquery.min.js (10.1.3.228) 0.98ms
+[I 201111 07:01:32 web:2250] 200 GET /axios.min.js (10.1.3.228) 3.29ms
+[I 201111 07:01:32 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 12.10ms
+[I 201111 07:01:32 web:2250] 200 GET /bootstrap.css (10.1.3.228) 1.03ms
+[I 201111 07:01:32 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 2.90ms
+[I 201111 07:01:35 web:2250] 304 GET /bootstrap.min.css (10.1.3.228) 1.29ms
+[W 201111 07:02:32 process:161] child 25 (pid 386761) killed by signal 9, restarting
+[W 201111 07:02:32 process:161] child 57 (pid 386809) killed by signal 9, restarting
+[W 201111 07:02:32 process:161] child 10 (pid 386746) killed by signal 9, restarting
+[W 201111 07:02:32 process:161] child 11 (pid 386747) killed by signal 9, restarting
+[W 201111 07:02:32 process:161] child 78 (pid 386832) killed by signal 9, restarting
+[W 201111 07:02:32 process:161] child 6 (pid 386742) killed by signal 9, restarting
+[W 201111 07:02:32 process:161] child 40 (pid 386786) killed by signal 9, restarting
+[I 201111 07:02:37 process:126] Starting 80 processes
+[I 201111 07:02:40 web:2250] 200 GET / (10.1.3.228) 2.82ms
+[I 201111 07:02:40 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 1.51ms
+[I 201111 07:02:40 web:2250] 200 GET /jquery.min.js (10.1.3.228) 1.15ms
+[I 201111 07:02:40 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 2.88ms
+[I 201111 07:02:40 web:2250] 200 GET /vue.min.js (10.1.3.228) 0.94ms
+[I 201111 07:02:40 web:2250] 200 GET /bootstrap.css (10.1.3.228) 1.22ms
+[I 201111 07:02:40 web:2250] 200 GET /axios.min.js (10.1.3.228) 1.22ms
+[I 201111 07:02:40 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 0.96ms
+[I 201111 07:02:40 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 11.11ms
+[I 201111 07:02:42 web:2250] 304 GET /bootstrap.min.css (10.1.3.228) 1.34ms
+[W 201111 07:04:14 process:161] child 31 (pid 391647) killed by signal 9, restarting
+[W 201111 07:04:14 process:161] child 10 (pid 391620) killed by signal 9, restarting
+[W 201111 07:04:14 process:161] child 28 (pid 391644) killed by signal 9, restarting
+[W 201111 07:04:14 process:161] child 43 (pid 391663) killed by signal 9, restarting
+[W 201111 07:04:14 process:161] child 40 (pid 391658) killed by signal 9, restarting
+[W 201111 07:04:14 process:161] child 36 (pid 391654) killed by signal 9, restarting
+[W 201111 07:04:14 process:161] child 2 (pid 391610) killed by signal 9, restarting
+[W 201111 07:04:14 process:161] child 78 (pid 391711) killed by signal 9, restarting
+[I 201111 07:05:32 process:126] Starting 80 processes
+[I 201111 07:05:34 web:2250] 200 GET / (10.1.3.228) 3.02ms
+[I 201111 07:05:34 web:2250] 200 GET /bootstrap.min.css (10.1.3.228) 2.70ms
+[I 201111 07:05:34 web:2250] 200 GET /bootstrap-switch.min.css (10.1.3.228) 1.34ms
+[I 201111 07:05:34 web:2250] 200 GET /jquery.min.js (10.1.3.228) 3.76ms
+[I 201111 07:05:34 web:2250] 200 GET /bootstrap.css (10.1.3.228) 3.95ms
+[I 201111 07:05:34 web:2250] 200 GET /axios.min.js (10.1.3.228) 1.56ms
+[I 201111 07:05:34 web:2250] 200 GET /vue.min.js (10.1.3.228) 3.97ms
+[I 201111 07:05:34 web:2250] 200 GET /dist/echarts.min.js (10.1.3.228) 11.22ms
+[I 201111 07:05:34 web:2250] 200 GET /bootstrap.min.js (10.1.3.228) 1.69ms
+[I 201111 07:05:34 web:2250] 200 GET /axios.min.map (10.1.3.228) 2.02ms
+[I 201111 07:05:34 web:2250] 101 GET /websocket (10.1.3.228) 1.57ms
+[I 201111 07:05:34 web:2250] 200 GET /bootstrap.min.css.map (10.1.3.228) 4.70ms
+[I 201111 07:05:34 web:2250] 200 GET /bootstrap.css.map (10.1.3.228) 7.07ms
+[I 201111 07:05:36 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2221.12ms
+[I 201111 07:05:37 web:2250] 200 GET /command?state=true (10.1.3.228) 1.99ms
+[I 201111 07:05:39 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2195.07ms
+[I 201111 07:05:42 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2437.71ms
+[I 201111 07:05:44 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2239.40ms
+[I 201111 07:05:46 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2172.77ms
+[I 201111 07:05:49 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2181.83ms
+[I 201111 07:05:51 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2187.64ms
+[I 201111 07:05:54 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2458.64ms
+[I 201111 07:05:56 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2362.06ms
+[I 201111 07:05:59 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2301.68ms
+[I 201111 07:06:01 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2312.40ms
+[I 201111 07:06:04 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2253.81ms
+[I 201111 07:06:06 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2309.58ms
+[I 201111 07:06:10 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2303.21ms
+[I 201111 07:06:12 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2362.35ms
+[I 201111 07:06:15 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2259.20ms
+[I 201111 07:06:16 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2244.90ms
+[I 201111 07:06:20 web:2250] 200 GET /gpu?adddiv=False&type=raw (10.1.3.228) 2316.84ms
+[W 201111 07:06:20 process:161] child 3 (pid 403711) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 31 (pid 403741) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 78 (pid 403788) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 34 (pid 403744) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 29 (pid 403739) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 66 (pid 403776) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 36 (pid 403746) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 51 (pid 403761) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 70 (pid 403780) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 67 (pid 403777) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 7 (pid 403715) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 61 (pid 403771) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 13 (pid 403722) killed by signal 9, restarting
+[W 201111 07:06:20 process:161] child 14 (pid 403724) killed by signal 9, restarting
