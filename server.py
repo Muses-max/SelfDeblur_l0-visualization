@@ -14,6 +14,8 @@ import psutil
 import signal
 import socket
 import requests
+from gpu_state_handler import get_gpu 
+
 prefix = 'web'
 port = 5000
 validlist = ['vue.min.js', 'axios.min.js', 'axios.min.map', 'index.html', 'index.txt']
@@ -41,7 +43,7 @@ def writelog(content, path='log/log.txt', logtime=True, breakline=True, ip=''):
         
 def wait_child(signum, frame):
     '''
-    To avoid the zombie process
+    Handling the zombie process
     '''
     try:
         while True:
@@ -67,8 +69,8 @@ def content(filename):
         data = f.read()
     if filename.find("htm") >= 0 or filename.find("txt") >= 0:
         #Here I cannot use the template system of tornado, because {{}} conflicts with Vue.
-        data = data.replace('ip:"127.0.0.1"', 'ip:"%s"'%ip)
-        data = data.replace('port:0', 'port:%s'%port)
+        data = data.replace('ip = "127.0.0.1"', 'ip="%s"'%ip)
+        data = data.replace('port = 0', 'port=%s'%port)
     return data
 
 
@@ -125,8 +127,13 @@ class FileHandler(tornado.web.RequestHandler):
     def get(self):
         try:
             uri = self.request.uri.lower()[1:] #remove the first /
-            path = os.path.join(prefix, uri)
-            if uri in validlist and os.path.exists(path):
+            valid = False
+            if uri.find('dist/echarts') >= 0:
+                path = uri
+                valid = True
+            else:
+                path = os.path.join(prefix, uri)
+            if (uri in validlist or valid) and os.path.exists(path):
                 self.write(content(path))
             else:
                 self.write("Invalid!")  
@@ -135,8 +142,7 @@ class FileHandler(tornado.web.RequestHandler):
         finally:
             writelog(json.dumps({"uri":self.request.uri, "method":self.request.method,"handler":self.__class__.__name__}), ip=self.request.remote_ip)
             
-        
-        
+            
 class CommandHandler(tornado.web.RequestHandler):
     '''
     Receive the command from the frontend
@@ -218,13 +224,30 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
                 WebSocketHandler.cache.write_message("Hello, world! from %s:%s"%(ip, port))
             else:
                 WebSocketHandler.cache.write_message(chat)
+                
+                
+class GPUHandler(tornado.websocket.WebSocketHandler):
+    def get(self):
+        t = self.get_argument("type", "raw")
+        self.action(t)
+              
+    def post(self):
+        t = json.loads(self.request.body.decode()).get("type", "raw")
+        self.action(t)
+                
+    def action(self, t):
+        if t not in {"raw", "view"}:
+            t = "raw"
+        data = get_gpu(t)
+        self.write(json.dumps(data))
+        
     
         
 def main():
     tornado.options.parse_command_line()
     application = tornado.web.Application(
-        [(r"/", MainHandler),(r"/(?i)ping|/(?i)helloworld", HelloworldHandler), (r"/.*\.(?i)html|/.*\.(?i)txt|/.*\.(?i)css|/.*\.(?i)js|/.*\.(?i)map", FileHandler),
-        (r"/command", CommandHandler), (r"/process", ProcessHandler), ('/websocket', WebSocketHandler)]
+        [(r"/", MainHandler),(r"/(?i)ping|/(?i)helloworld", HelloworldHandler),
+        (r"/command", CommandHandler), (r"/process", ProcessHandler), ('/websocket', WebSocketHandler),(r"/.*\.(?i)html|/.*\.(?i)txt|/.*\.(?i)css|/.*\.(?i)js|/.*\.(?i)map", FileHandler), ('/gpu', GPUHandler), ('/gpus', GPUHandler)]
     )
     http_server = tornado.httpserver.HTTPServer(application)
     http_server.listen(options.port)

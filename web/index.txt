@@ -3,6 +3,7 @@
 <head>
     <script type="text/javascript" src="vue.min.js"></script>
     <script type="text/javascript" src="axios.min.js"></script>
+    <script type="text/javascript"  src="dist/echarts.min.js"></script>
     <style>
        .Start{
            text-decoration: none;
@@ -43,15 +44,18 @@
     <div id="startbutton">
         <button id="b1" :class="todo" v-on:Click="btnClick()"> {{todo}} </button>    
     </div>
+    <div id="gpubars" style="width: 1000px;height:1000px;">
+    
+    </div>
     <script>
        //这里需要让程序的启停状态, 因此data没有写成函数
-       var app=new Vue({
+       var ip = "127.0.0.1";//server.py will automatically modify it!
+       var port = 0;//server.py will automatically modify it!
+       var app = new Vue({
          el:'#startbutton',
          data:{
            start: false,
            todo:"Start",
-           ip:"127.0.0.1", //server.py will automatically modify it!
-           port:0
          },
          methods:{
            btnClick:function(){
@@ -76,7 +80,7 @@
          
          created: function() {
             console.log("Starting connection to WebSocket Server")
-            this.connection = new WebSocket("ws://" + this.ip + ":" + this.port + "/websocket")
+            this.connection = new WebSocket("ws://" + ip + ":" + port + "/websocket")
 
             this.connection.onmessage = function(event) {
               var str = event.data;
@@ -102,6 +106,143 @@
             }
 
          } //end of created: function()
-       })
+       }) //end of var app
+       
+       /*
+       echart options...
+       References:
+       1. https://blog.csdn.net/m0_38134431/article/details/102707714 
+       2. Official Documents of ECharts: https://www.uihtm.com/doc/echarts/doc/doc.html#Series
+       */
+       var options = {
+         title:{
+            text: 'NVIDIA Tesla V100 GPU'
+         },//title of the echarts
+         
+         tooltip: {
+              trigger: 'axis',
+              axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+              }
+         }, //when a mouse is hovering over an echart.
+         
+         legend: {
+              data: ['Memory-Util', 'GPU-Util']
+         }, //legend
+         
+         grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+         },//grid
+         
+         xAxis: [
+              {
+                type: 'value',
+                // 设置x轴线的属性
+                axisLine: {
+                  lineStyle: {
+                    color: '#888'
+                  }
+                },
+                max:100,
+                min:-100,
+                interval:10, 
+                axisLabel: {
+                  formatter (value) {
+                    return Math.abs(value) // 负数取绝对值变正数（x轴本来数据是正负才能分开两边展示的，所以我们只是把负数处理为正数在视觉上显示）
+                  }
+                }
+              }
+         ], //end of xAxis
+            
+         yAxis: [
+              {
+                type: 'category',
+                axisTick: {show: false},
+                // 设置y轴线的属性
+                axisLine: {
+                  lineStyle: {
+                    color: '#999'
+                  }
+                },
+                data: ['3','2','1','0: NVIDIA V100 (33MB/32510MB)'] // y轴下到上
+              }
+         ], //end of yAxis
+         
+         color: ['#98d87d', '#49a9ee'],
+         
+         series:[{
+                name: 'Memory-Util',
+                type: 'bar',
+                barMaxWidth: '22',
+                stack: 'gpu',
+                label: {
+                  normal: {
+                    show: true,
+                    color: '#444',
+                    align: 'left',
+                    formatter (params) {
+                      var htmlStr = Math.abs(params.data.value) + "%";
+                      return htmlStr
+                    } //formatter
+                  } //normal
+                }, //label
+              data:[
+                  {
+                    value:-30,
+                  },
+                  {
+                    value:-50,
+                  },
+                  {
+                    value:-40,
+                  },
+                  {
+                    value:-70,
+                  },
+              ] //end of data of series[0]
+            }, //series[0]
+            
+           {
+                name: 'GPU-Util',
+                type: 'bar',
+                barMaxWidth: '22',
+                stack: 'gpu',
+                label: {
+                  normal: {
+                    show: true,
+                    color: '#444',
+                    align: 'right',
+                    formatter (params) {
+                      var htmlStr = params.data.value + "%";
+                      return htmlStr
+                    } //formatter
+                  } //normal
+                }, //label
+              data:[
+                  {
+                    value:40,
+                  },
+                  {
+                    value:40,
+                  },
+                  {
+                    value:40,
+                  },
+                  {
+                    value:90,
+                  },
+              ]
+            }, //end of data of series[1]
+         ]//end of series
+       } //end of options
+       
+       /* inject the echart options (var options) into the HTML */
+       var id = 'gpubars';
+       var state = 'raw';
+       var myChart = echarts.init(document.getElementById(id));
+       myChart.setOption(options);
     </script>
 </body>
