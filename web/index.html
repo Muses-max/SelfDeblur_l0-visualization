@@ -351,13 +351,10 @@
        var raw = 'raw';
        var state = raw;
        var localstate = localStorage.getItem('state');
-       var inner = localStorage.getItem('innerhtml');
        var global = '';
        if(localstate != null && localstate != state)
           state = localstate;
-       if(inner && state == "raw")
-          document.getElementById("raw").innerHTML = inner;
-       var interval = 1000;
+       var interval = 3000;
        
        /*
        The view mode
@@ -398,7 +395,7 @@
                  if(state == raw && typeof(global) == "string"){
                      var innerhtml = data + '<br><br>' + pidinfo;
                      document.getElementById("raw").innerHTML = innerhtml;
-                     localStorage.setItem("innerhtml", innerhtml);
+                     localStorage.set("
                  }
                  else if(state == id){
                      if(count > 0){ 

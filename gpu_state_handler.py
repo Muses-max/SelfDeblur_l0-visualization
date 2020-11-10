@@ -103,7 +103,7 @@ def get_gpu(t, adaption=True,adddiv="True",linux=True):
     adddiv = True if adddiv == "True" else False
     if t == 'raw':
         return _raw(adaption, adddiv=adddiv,linux=linux)
-    elif t == 'view':
+    elif t == 'gpubars-view':
         return _view()
     else:
         raise Exception("What is it?")

@@ -243,7 +243,7 @@ class GPUHandler(tornado.websocket.WebSocketHandler):
                 
     def action(self, t, adddiv="True"):
         try:
-            if t not in {"raw", "view"}:
+            if t not in {"raw", "gpubars-view"}:
                 t = "raw"
             data = get_gpu(t, adddiv=adddiv)
             self.write(json.dumps(data))
@@ -278,7 +278,7 @@ class PIDHandler(tornado.websocket.WebSocketHandler):
 def main():
     tornado.options.parse_command_line()
     application = tornado.web.Application(
-        [(r"/", MainHandler),(r"/(?i)ping|/(?i)helloworld", HelloworldHandler),
+        [("/", MainHandler),("/raw", MainHandler),(r"/(?i)ping|/(?i)helloworld", HelloworldHandler),
         (r"/command", CommandHandler), (r"/process", ProcessHandler), ('/websocket', WebSocketHandler),(r"/.*\.(?i)html|/.*\.(?i)txt|/.*\.(?i)css|/.*\.(?i)js|/.*\.(?i)map", FileHandler), ('/gpu', GPUHandler), ('/gpus', GPUHandler), (r'/\d+', PIDHandler)]
     )
     http_server = tornado.httpserver.HTTPServer(application)
