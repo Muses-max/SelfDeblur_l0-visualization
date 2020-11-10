@@ -139,7 +139,7 @@
         </label>
     </div>
     <div id="gpubars" style="margin-top:40px;">
-      <div id="gpubars-view" style="width:1500px;height:400px;">
+      <div id="gpubars-view" style="width:1500px;height:400px;"></div>
       <div id="raw" style="font-family:Consolas,Monaco,monospace" ></div>
     </div>
     <script>
@@ -354,7 +354,7 @@
        /*
        The view mode
        */
-       document.getElementById("raw").style.visibility = "hidden";
+       document.getElementById("raw").style.display = "none";
        var myChart = null; 
        
        var echart = new Vue({
@@ -408,9 +408,17 @@
 
             var clickSwitch = function() {
                 if ($("#onoffswitch").is(':checked')) {
-                    console.log("在ON的状态下");
+                    //switch from "VIEW" to RAW"
+                    //console.log("RAW");
+                    state = "raw";
+                    document.getElementById("raw").style.display = "block";
+                    document.getElementById("gpubars-view").style.display = "none";
                 } else {
-                    console.log("在OFF的状态下");
+                    //switch from "RAW" to "VIEW"
+                    //console.log("VIEW");
+                    state = "view";
+                    document.getElementById("raw").style.display = "none";
+                    document.getElementById("gpubars-view").style.display = "block";
                 }
             };
         });
