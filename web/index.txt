@@ -403,7 +403,7 @@
         */
        $(document).ready(function() {
             $("#onoffswitch").on('click', function(){
-                clickSwitch()
+                clickSwitch();
             });
 
             var clickSwitch = function() {
