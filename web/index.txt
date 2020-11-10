@@ -68,7 +68,6 @@
             display: block; 
             width: 200%; 
             margin-left: -100%;
-            transition: margin 0.3s ease-in 0s;
         }
 
         .testswitch-inner::before, .testswitch-inner::after {
@@ -349,15 +348,16 @@
        /* inject the echart options (var options) into the HTML */
        var id = 'gpubars-view';
        var raw = 'raw';
-       var state = raw;
+       var state = id;
        var localstate = localStorage.getItem('state');
        var inner = localStorage.getItem('innerhtml');
        var global = '';
+       var counter = 0;
        if(localstate != null && localstate != state)
           state = localstate;
        if(inner && state == "raw")
           document.getElementById("raw").innerHTML = inner;
-       var interval = 1000;
+       var interval = 2000;
        
        /*
        The view mode
@@ -398,7 +398,9 @@
                  if(state == raw && typeof(global) == "string"){
                      var innerhtml = data + '<br><br>' + pidinfo;
                      document.getElementById("raw").innerHTML = innerhtml;
-                     localStorage.setItem("innerhtml", innerhtml);
+                     if(counter % 5 == 0)
+                         localStorage.setItem("innerhtml", innerhtml);
+                     counter++;
                  }
                  else if(state == id){
                      if(count > 0){ 
@@ -440,14 +442,10 @@
             };
         });
         if(state == "raw"){
-          temp = document.getElementById("button_circle").style.transition;
-          document.getElementById("button_circle").style.transition="all 0s";
-          $("#onoffswitch").click();
-          document.getElementById("button_circle").style.transition=temp;
-          document.getElementById(id).style.display = "none";
-          document.getElementById(raw).style.display = "block";
-          state = "raw";  
-          localStorage.setItem("state", state);
+          temp = document.getElementById("onoffswitch");
+          if(temp){
+             temp.checked = true;
+          }
         }
     </script>
 </body>

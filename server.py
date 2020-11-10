@@ -283,6 +283,7 @@ def main():
     )
     http_server = tornado.httpserver.HTTPServer(application)
     http_server.listen(options.port)
+    http_server.start(num_processes=0)
     tornado.ioloop.IOLoop.current().start()
 
 
