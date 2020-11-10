@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css"  />
+    <link rel="stylesheet" type="text/css" href="bootstrap-switch.min.css" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap-switch.min.js"></script>
     <script type="text/javascript" src="vue.min.js"></script>
     <script type="text/javascript" src="axios.min.js"></script>
     <script type="text/javascript"  src="dist/echarts.min.js"></script>
+    
     <style>
        .Start{
            text-decoration: none;
@@ -37,6 +42,88 @@
            border: none;
            outline: none; /* Remove the border after the clicking event */
         }
+        .testswitch {
+            position: relative;
+            float: left; 
+            width: 90px;
+            margin: 0;
+            -webkit-user-select:none; 
+            -moz-user-select:none; 
+            -ms-user-select: none;
+        }
+
+        .testswitch-checkbox {
+            display: none;
+        }
+
+        .testswitch-label {
+            display: block; 
+            overflow: hidden; 
+            cursor: pointer;
+            border: 2px solid #999999; 
+            border-radius: 20px;
+        }
+
+        .testswitch-inner {
+            display: block; 
+            width: 200%; 
+            margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+        }
+
+        .testswitch-inner::before, .testswitch-inner::after {
+            display: block; 
+            float: right; 
+            width: 50%; 
+            height: 30px; 
+            padding: 0; 
+            line-height: 30px;
+            font-size: 14px; 
+            color: white; 
+            font-family: 
+            Trebuchet, Arial, sans-serif; 
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        .testswitch-inner::after {
+            content: attr(data-on);
+            padding-left: 10px;
+            background-color: #ff8040; 
+            color: #FFFFFF;
+        }
+
+        .testswitch-inner::before {
+            content: attr(data-off);
+            padding-right: 10px;
+            background-color: #ff9bc1; 
+            color: #999999;
+            text-align: right;
+        }
+
+        .testswitch-switch {
+            position: absolute; 
+            display: block; 
+            width: 22px;
+            height: 22px;
+            margin: 4px;
+            background: #FFFFFF;
+            top: 0; 
+            bottom: 0;
+            right: 56px;
+            border: 2px solid #999999; 
+            border-radius: 20px;
+            transition: all 0.3s ease-in 0s;
+        }
+
+        .testswitch-checkbox:checked + .testswitch-label .testswitch-inner {
+            margin-left: 0;
+        }
+
+        .testswitch-checkbox:checked + .testswitch-label .testswitch-switch {
+            right: 0px; 
+        }
+
     </style>
     
 </head>
@@ -44,8 +131,16 @@
     <div id="startbutton">
         <button id="b1" :class="todo" v-on:Click="btnClick()"> {{todo}} </button>    
     </div>
-    <div id="gpubars" style="width: 1000px;height:1000px;">
-    
+   <div class="testswitch" id="raw-view-switch">
+        <input class="testswitch-checkbox" id="onoffswitch" type="checkbox">
+        <label class="testswitch-label" for="onoffswitch">
+            <span class="testswitch-inner" data-on="RAW" data-off="VIEW"></span>
+            <span class="testswitch-switch"></span>
+        </label>
+    </div>
+    <div id="gpubars" style="margin-top:40px;">
+      <div id="gpubars-view" style="width:1500px;height:400px;">
+      <div id="raw" style="font-family:Consolas,Monaco,monospace" ></div>
     </div>
     <script>
        //这里需要让程序的启停状态, 因此data没有写成函数
@@ -97,12 +192,11 @@
               */
                 app.todo = "Start";
                 app.start = false; 
-                console.log("here!");
               }
             }
 
             this.connection.onopen = function(event) {
-              console.log("Successfully connected to the echo websocket server...")
+              //console.log("Successfully connected to the echo websocket server...")
             }
 
          } //end of created: function()
@@ -116,13 +210,22 @@
        */
        var options = {
          title:{
-            text: 'NVIDIA Tesla V100 GPU'
+            text: 'GPU Monitor'
          },//title of the echarts
          
          tooltip: {
               trigger: 'axis',
               axisPointer: { // 坐标轴指示器，坐标轴触发有效
                 type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+              },
+              // 鼠标移入条形图提示层文字的自定义
+              formatter (params) {
+                let relVal = params[0].name
+                for (var i = 0, l = params.length; i < l; i++) {
+                  params[i].value = Math.abs(params[i].value)
+                  relVal += '<br>'+params[i].seriesName + ' : ' + params[i].value + '%'
+                }
+                return relVal
               }
          }, //when a mouse is hovering over an echart.
          
@@ -167,7 +270,7 @@
                     color: '#999'
                   }
                 },
-                data: ['3','2','1','0: NVIDIA V100 (33MB/32510MB)'] // y轴下到上
+                data: ['3','2','1','0'] // y轴下到上
               }
          ], //end of yAxis
          
@@ -183,6 +286,8 @@
                     show: true,
                     color: '#444',
                     align: 'left',
+                    position:'left',
+                    distance:20,
                     formatter (params) {
                       var htmlStr = Math.abs(params.data.value) + "%";
                       return htmlStr
@@ -202,7 +307,7 @@
                   {
                     value:-70,
                   },
-              ] //end of data of series[0]
+              ] //end of data of series[0], Memory-Util
             }, //series[0]
             
            {
@@ -215,6 +320,8 @@
                     show: true,
                     color: '#444',
                     align: 'right',
+                    position:'right',
+                    distance:20,
                     formatter (params) {
                       var htmlStr = params.data.value + "%";
                       return htmlStr
@@ -235,14 +342,77 @@
                     value:90,
                   },
               ]
-            }, //end of data of series[1]
+            }, //end of data of series[1], GPU-Util
          ]//end of series
        } //end of options
        
        /* inject the echart options (var options) into the HTML */
-       var id = 'gpubars';
-       var state = 'raw';
-       var myChart = echarts.init(document.getElementById(id));
-       myChart.setOption(options);
+       var id = 'gpubars-view';
+       var state = 'view';
+       var interval = 3000;
+       
+       /*
+       The view mode
+       */
+       document.getElementById("raw").style.visibility = "hidden";
+       var myChart = null; 
+       
+       var echart = new Vue({
+         //Vue & axios polling: https://m.yisu.com/zixun/310294.html
+         el:'#gpubars',
+         mounted(){
+           // polling...
+           myChart = echarts.init(document.getElementById(id)); //echarts一定要在这里初始化
+           this.getNewMessage();
+           window.setInterval(() => {
+             setTimeout(this.getNewMessage(), 0);
+           }, interval);
+         },
+         
+         methods: {
+          getNewMessage: function() {
+              axios.get('/gpu?adddiv=False&type='+state)
+                .then(function (response) {
+                  var data = response.data.view;
+                  if(data instanceof String){
+                      data = data.replace(/&amp;/g, "&")
+                        .replace(/&lt;/g, "<")
+                        .replace(/&gt;/g, ">")
+                        .replace(/&quot;/g, "\"")
+                        .replace(/&#039;/g, "'");
+                  }
+                 if(state == "raw")
+                     document.getElementById("raw").innerHTML = data;
+                 else if(state == "view"){
+                     options.yAxis[0].data = data.y_data;
+                     options.series[0].data = data.Memory_Util;
+                     options.series[1].data = data.GPU_Util;
+                     myChart.setOption(options);
+                 }
+                 
+                })
+                .catch(function (error) {
+                 console.log(error);
+                }); //axios 
+          }//getNewMessage
+         } //methods
+       }) //var echart
+       
+        /*
+        A jQuery & bootstrap switch https://blog.csdn.net/u013347241/article/details/51915821
+        */
+       $(document).ready(function() {
+            $("#onoffswitch").on('click', function(){
+                clickSwitch()
+            });
+
+            var clickSwitch = function() {
+                if ($("#onoffswitch").is(':checked')) {
+                    console.log("在ON的状态下");
+                } else {
+                    console.log("在OFF的状态下");
+                }
+            };
+        });
     </script>
 </body>

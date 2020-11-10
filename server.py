@@ -18,7 +18,7 @@ from gpu_state_handler import get_gpu
 
 prefix = 'web'
 port = 5000
-validlist = ['vue.min.js', 'axios.min.js', 'axios.min.map', 'index.html', 'index.txt']
+validlist = ['vue.min.js', 'axios.min.js', 'axios.min.map', 'index.html', 'index.txt', 'bootstrap.min.css', 'bootstrap-switch.min.css', 'jquery.min.js','bootstrap-switch.min.js', 'bootstrap.min.css.map']
 rootfile = '%s/%s'%(prefix, 'index.txt')
 define("port", default=port, help="run on the given port", type=int)
 SIGNAL_SIGKILL = 9
@@ -229,16 +229,19 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
 class GPUHandler(tornado.websocket.WebSocketHandler):
     def get(self):
         t = self.get_argument("type", "raw")
-        self.action(t)
+        adddiv = self.get_argument("adddiv", "True")
+        self.action(t, adddiv=adddiv)
               
     def post(self):
-        t = json.loads(self.request.body.decode()).get("type", "raw")
-        self.action(t)
+        data = json.loads(self.request.body.decode())
+        t = data.get("type", "raw")
+        adddiv = data.get("adddiv", "True")
+        self.action(t, adddiv=adddiv)
                 
-    def action(self, t):
+    def action(self, t, adddiv="True"):
         if t not in {"raw", "view"}:
             t = "raw"
-        data = get_gpu(t)
+        data = get_gpu(t, adddiv=adddiv)
         self.write(json.dumps(data))
         
     
