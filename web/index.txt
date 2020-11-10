@@ -4,11 +4,12 @@
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css"  />
     <link rel="stylesheet" type="text/css" href="bootstrap-switch.min.css" />
     <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="bootstrap-switch.min.js"></script>
     <script type="text/javascript" src="vue.min.js"></script>
     <script type="text/javascript" src="axios.min.js"></script>
     <script type="text/javascript"  src="dist/echarts.min.js"></script>
-    
+   <!--<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" type="text/css", href="/bootstrap.css" />
+    <script src="/bootstrap.min.js"></script>
     <style>
        .Start{
            text-decoration: none;
@@ -127,10 +128,32 @@
     
 </head>
 <body>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Panel</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)" onclick="switch2Controller()">Controller</a></li>
+                    <li><a>Monitor</a></li>
+                    <li><a>Editor</a></li>
+                    <li><a href="https://www.google.com" target="_Blank">Google</a></li>
+                    <li><a href="https://www.baidu.com" target="_Blank">Baidu</a></li>
+                    <li><a href="https://stackoverflow.com/" target="_Blank">SO</a></li>
+                    <li><a href="https://www.wikipedia.org/" target="_Blank">Wiki</a></li>
+                    <li><a href="https://ieeexplore.ieee.org/Xplore/home.jsp" target="_Blank">IEEE Xplore</a></li>
+                    <li><a href="https://www.sciencedirect.com/" target="_Blank">Elsevier</a></li>
+                    <li><a href="https://arxiv.org/" target="_Blank">Arxiv</a></li>
+                    <li><a href="https://scihub.wikicn.top/" target="_Blank">Sci-Hub</a></li>
+                </ul>
+            </div>
+       </div>
+    </nav>
     <div id="startbutton">
         <button id="b1" :class="todo" v-on:Click="btnClick()"> {{todo}} </button>    
     </div>
-   <div class="testswitch" id="raw-view-switch">
+    <div class="testswitch" id="raw-view-switch">
         <input class="testswitch-checkbox" id="onoffswitch" type="checkbox">
         <label class="testswitch-label" id="label", for="onoffswitch">
             <span class="testswitch-inner" data-on="RAW" data-off="VIEW" id="inner"></span>
@@ -145,6 +168,7 @@
        //这里需要让程序的启停状态, 因此data没有写成函数
        var ip = "127.0.0.1";//server.py will automatically modify it!
        var port = 0;//server.py will automatically modify it!
+       var global_state = 'start'; //global_state in ['gpu_monitor', 'file_editor', 'process_controller']
        var app = new Vue({
          el:'#startbutton',
          data:{
@@ -357,7 +381,7 @@
           state = localstate;
        if(inner && state == "raw")
           document.getElementById("raw").innerHTML = inner;
-       var interval = 2000;
+       var interval = 1500000000000;
        
        /*
        The view mode
@@ -447,5 +471,11 @@
              temp.checked = true;
           }
         }
+        
+        
+       function switch2Controller(){
+       
+       
+       }
     </script>
 </body>

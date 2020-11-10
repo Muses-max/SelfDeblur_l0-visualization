@@ -21,7 +21,7 @@ system = platform.platform()
 islinux = system.lower().find("linux") >= 0
 prefix = 'web'
 port = 5000
-validlist = ['vue.min.js', 'axios.min.js', 'axios.min.map', 'index.html', 'index.txt', 'bootstrap.min.css', 'bootstrap-switch.min.css', 'jquery.min.js','bootstrap-switch.min.js', 'bootstrap.min.css.map']
+validlist = ['vue.min.js', 'axios.min.js', 'axios.min.map', 'index.html', 'index.txt', 'bootstrap.min.css', 'bootstrap-switch.min.css', 'jquery.min.js','bootstrap-switch.min.js', 'bootstrap.min.css.map','bootstrap.min.js', 'bootstrap.css', 'bootstrap.min.css','bootstrap.css.map']
 rootfile = '%s/%s'%(prefix, 'index.txt')
 define("port", default=port, help="run on the given port", type=int)
 SIGNAL_SIGKILL = 9
@@ -138,6 +138,9 @@ class FileHandler(tornado.web.RequestHandler):
                 path = os.path.join(prefix, uri)
             if (uri in validlist or valid) and os.path.exists(path):
                 self.write(content(path))
+                if path.find(".css") >= 0:
+                    self.set_header("Content-Type","text/css");
+                self.set_header("Content-Encoding","gzip");
             else:
                 self.write("Invalid!")  
         except:
