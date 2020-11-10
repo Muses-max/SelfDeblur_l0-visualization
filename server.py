@@ -3,7 +3,7 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 import tornado.websocket
-import os
+import os,re
 import time
 import json
 import traceback
@@ -15,7 +15,10 @@ import signal
 import socket
 import requests
 from gpu_state_handler import get_gpu 
-
+import platform
+from pidhandler import pid2user
+system = platform.platform()
+islinux = system.lower().find("linux") >= 0
 prefix = 'web'
 port = 5000
 validlist = ['vue.min.js', 'axios.min.js', 'axios.min.map', 'index.html', 'index.txt', 'bootstrap.min.css', 'bootstrap-switch.min.css', 'jquery.min.js','bootstrap-switch.min.js', 'bootstrap.min.css.map']
@@ -239,18 +242,44 @@ class GPUHandler(tornado.websocket.WebSocketHandler):
         self.action(t, adddiv=adddiv)
                 
     def action(self, t, adddiv="True"):
-        if t not in {"raw", "view"}:
-            t = "raw"
-        data = get_gpu(t, adddiv=adddiv)
-        self.write(json.dumps(data))
+        try:
+            if t not in {"raw", "view"}:
+                t = "raw"
+            data = get_gpu(t, adddiv=adddiv)
+            self.write(json.dumps(data))
+        except:
+            writelog(traceback.format_exc(), ip=self.request.remote_ip)
+        finally:
+            writelog(json.dumps({"uri":self.request.uri, "method":self.request.method, "handler":self.__class__.__name__}), ip=self.request.remote_ip)
         
     
+class PIDHandler(tornado.websocket.WebSocketHandler):
+    def get(self):
+        try:
+            if islinux < 0:
+                self.write("Sorry, this function is only supported on the Linux platform!") 
+            self.action()
+        except:
+            writelog(traceback.format_exc(), ip=self.request.remote_ip)
+            self.write(traceback.format_exc())
+        finally:
+            writelog(json.dumps({"uri":self.request.uri, "method":self.request.method, "handler":self.__class__.__name__}), ip=self.request.remote_ip)
+            
+    def action(self):
+        pid = self.request.uri[1:]
+        user, total = pid2user(pid)
+        if user:
+            self.write("PID %s belongs to %s:<br> %s"%(pid, user, total))
+        else:
+            self.write("PID %s does not exist!"%pid)
+        
+        
         
 def main():
     tornado.options.parse_command_line()
     application = tornado.web.Application(
         [(r"/", MainHandler),(r"/(?i)ping|/(?i)helloworld", HelloworldHandler),
-        (r"/command", CommandHandler), (r"/process", ProcessHandler), ('/websocket', WebSocketHandler),(r"/.*\.(?i)html|/.*\.(?i)txt|/.*\.(?i)css|/.*\.(?i)js|/.*\.(?i)map", FileHandler), ('/gpu', GPUHandler), ('/gpus', GPUHandler)]
+        (r"/command", CommandHandler), (r"/process", ProcessHandler), ('/websocket', WebSocketHandler),(r"/.*\.(?i)html|/.*\.(?i)txt|/.*\.(?i)css|/.*\.(?i)js|/.*\.(?i)map", FileHandler), ('/gpu', GPUHandler), ('/gpus', GPUHandler), (r'/\d+', PIDHandler)]
     )
     http_server = tornado.httpserver.HTTPServer(application)
     http_server.listen(options.port)

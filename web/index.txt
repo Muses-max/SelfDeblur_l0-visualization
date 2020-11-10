@@ -349,7 +349,7 @@
        /* inject the echart options (var options) into the HTML */
        var id = 'gpubars-view';
        var state = 'view';
-       var interval = 3000;
+       var interval = 30000000;
        
        /*
        The view mode
@@ -373,7 +373,9 @@
           getNewMessage: function() {
               axios.get('/gpu?adddiv=False&type='+state)
                 .then(function (response) {
+                  var count = response.data.count;
                   var data = response.data.view;
+                  var pidinfo = response.data.pidinfo;
                   if(data instanceof String){
                       data = data.replace(/&amp;/g, "&")
                         .replace(/&lt;/g, "<")
@@ -381,13 +383,17 @@
                         .replace(/&quot;/g, "\"")
                         .replace(/&#039;/g, "'");
                   }
-                 if(state == "raw")
-                     document.getElementById("raw").innerHTML = data;
+                 if(state == "raw"){
+                     document.getElementById("raw").innerHTML = data + '<br><br>' + pidinfo;
+                 }
                  else if(state == "view"){
-                     options.yAxis[0].data = data.y_data;
-                     options.series[0].data = data.Memory_Util;
-                     options.series[1].data = data.GPU_Util;
-                     myChart.setOption(options);
+                     console.log(data.count);
+                     if(count > 0){ 
+                         options.yAxis[0].data = data.y_data;
+                         options.series[0].data = data.Memory_Util;
+                         options.series[1].data = data.GPU_Util;
+                         myChart.setOption(options);
+                     }
                  }
                  
                 })
@@ -411,6 +417,7 @@
                     //switch from "VIEW" to RAW"
                     //console.log("RAW");
                     state = "raw";
+                    echart.getNewMessage();
                     document.getElementById("raw").style.display = "block";
                     document.getElementById("gpubars-view").style.display = "none";
                 } else {
