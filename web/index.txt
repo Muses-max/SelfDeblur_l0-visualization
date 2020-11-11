@@ -6,8 +6,7 @@
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="vue.min.js"></script>
     <script type="text/javascript" src="axios.min.js"></script>
-    <script type="text/javascript"  src="dist/echarts.min.js"></script>
-   <!--<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />-->
+    <script type="text/javascript"  src="dist/echarts.js"></script>
     <link rel="stylesheet" type="text/css", href="/bootstrap.css" />
     <script src="/bootstrap.min.js"></script>
     <style>
@@ -150,8 +149,9 @@
             </div>
        </div>
     </nav>
-    <div id="startbutton">
-        <button id="b1" :class="todo" v-on:Click="btnClick()"> {{todo}} </button>    
+    <div id="startbutton" style="width:800px;height:800px;">
+        <button id="b1" :class="todo" v-on:Click="btnClick()"> {{todo}} </button> 
+        <div id="progress-bar" style="width:800px;height:800px;margin-top:70px"></div>
     </div>
     <div class="testswitch" id="raw-view-switch">
         <input class="testswitch-checkbox" id="onoffswitch" type="checkbox">
@@ -170,6 +170,65 @@
        var port = 0;//server.py will automatically modify it!
        var port2 = 0; //server_ss.py; single thread
        var globalstate = 'home'; //global_state in ['home', 'gpu_monitor', 'file_editor', 'process_controller']
+       var pbar = null;
+       var echarttimeout = 1500;
+       var pb = {
+          grid: {   // 直角坐标系内绘图网格
+            left: '80',  //grid 组件离容器左侧的距离,
+                         //left的值可以是80这样具体像素值，
+                        //也可以是'80%'这样相对于容器高度的百分比
+            top: '80',
+            right: '0',
+            bottom: '0',
+            containLabel: true   //gid区域是否包含坐标轴的刻度标签。为true的时候，
+            // left/right/top/bottom/width/height决定的是包括了坐标轴标签在内的
+            //所有内容所形成的矩形的位置.常用于【防止标签溢出】的场景
+         },//grid
+         xAxis:{
+            max:100,
+            type: 'value',
+            min:0,
+         },//xAxis
+         yAxis:{
+           type: 'category',
+           axisLabel: {
+              color: 'black',
+              fontSize: 36,
+           },
+           data: ['progress'],
+         },
+         series: [
+           {
+             type: 'bar',//柱状、条形图
+             barWidth: 19,//柱条的宽度,默认自适应
+             data: [40],
+             label: { //图形上的文本标签
+                    show: true,
+                    position: 'right',//标签的位置
+                    offset: [0, 0],  //标签文字的偏移，此处表示向上偏移40
+                    color: 'black',//标签字体颜色
+             },
+           },
+         ],//series,
+         itemstyle:{
+            normal: {
+              color: new echarts.graphic.LinearGradient(
+                 0, 0, 1, 0,
+                 [{
+                  offset: 0,
+                  color: '#22B6ED'
+                  },
+                  {
+                    offset: 1,
+                    color: '#3FE279'
+                  }
+                 ]//the color of linear gradient
+
+              ) //color:new Echarts.grahic.LinearGraient
+            } //normal
+         }, //itemstyle
+       }; //progressive bar
+
        var app = new Vue({
          el:'#startbutton',
          data:{
@@ -195,14 +254,25 @@
            }, //end of btnClick
          },//end of methods
          
+         mounted:function(){
+            pbar = echarts.init(document.getElementById("progress-bar"));
+            //pbar.setOption(pb);
+         },
+         
          created: function() {
-            console.log("Starting connection to WebSocket Server")
-            this.connection = new WebSocket("ws://" + ip + ":" + port2 + "/websocket")
-
+            console.log("Starting connection to WebSocket Server");
+            this.connection = new WebSocket("ws://" + ip + ":" + port2 + "/websocket");
             this.connection.onmessage = function(event) {
               var str = event.data;
               var obj = JSON.parse(str);
-              console.log(obj.finish);
+              //console.log(obj.finish);
+              setTimeout(() => {
+                    try {
+                      alert(obj.progress);
+                      pb.series[0].data[0] = obj.progress;
+                      pbar.setOption(pb);
+                    } catch (error) {console.log(error);}
+              }, echarttimeout);
               if(obj.finish == "True"){
               /*
                If the Vue code is written as:
@@ -395,7 +465,6 @@
          //Vue & axios polling: https://m.yisu.com/zixun/310294.html
          el:'#gpubars',
          mounted(){
-           // polling...
            myChart = echarts.init(document.getElementById(id)); //echarts一定要在这里初始化
            this.getNewMessage();
            window.setInterval(() => {
@@ -423,8 +492,7 @@
                  if(state == raw && typeof(global) == "string"){
                      var innerhtml = data + '<br><br>' + pidinfo;
                      document.getElementById("raw").innerHTML = innerhtml;
-                     if(counter % 5 == 0)
-                         localStorage.setItem("innerhtml", innerhtml);
+                     localStorage.setItem("innerhtml", innerhtml);
                      counter++;
                  }
                  else if(state == id){
@@ -443,6 +511,7 @@
           }//getNewMessage
          } //methods
        }) //var echart
+       
        
        
        $(document).ready(function() {
